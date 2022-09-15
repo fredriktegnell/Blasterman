@@ -1,18 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://NPC/No Outlines/npc x1.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset x1.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 
-[node name="NpcX1" type="Sprite" parent="."]
-position = Vector2( 37, 34 )
-texture = ExtResource( 1 )
-hframes = 6
-vframes = 3
-
 [node name="TilesetX1" type="Sprite" parent="."]
-position = Vector2( 114, 51 )
+position = Vector2( 16, 16 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 1300, 70, 30, 30 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
