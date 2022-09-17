@@ -14,8 +14,8 @@ onready var player_detection_zone = $PlayerDetectionZone
 var current_state: int = State.PATROL setget set_state
 var actor = null
 var player: Player = null
-var path: Array = [] # Destination positions
 var levelNavigation: Navigation2D = null
+
 
 func _ready():
 	yield(get_tree(), "idle_frame") # wait for get_tree() to be rdy
@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 			pass
 		State.ENGAGE:
 			if player != null and actor != null and levelNavigation != null:
-				actor.rotation = actor.global_position.direction_to(player.global_position).angle()
+				#actor.rotation = actor.global_position.direction_to(player.global_position).angle()
 				#actor.velocity = actor.global_position.direction_to(player.global_position) * actor.MAX_SPEED
 				generate_path()
 				navigate()
@@ -57,20 +57,21 @@ func set_state(new_state: int):
 	emit_signal("state_changed", current_state)
 
 func navigate(): # next position to go to
-	if path.size() > 0:
-		print("path size is not empty")
-		actor.velocity = actor.global_position.direction_to(path[1]) * actor.MAX_SPEED
+	if actor.path.size() > 0:
+		#print("path size is not empty")
+		actor.velocity = actor.global_position.direction_to(actor.path[1]) * actor.MAX_SPEED
+		print(actor.path[1])
 		
 		# If destination reached, remove the point from path array
-		if actor.global_position == path[0]:
-			path.pop_front()
+		if actor.global_position == actor.path[0]:
+			actor.path.pop_front()
 
 func generate_path():
 	if levelNavigation != null and player != null:
 		#print("levelnavigation and player exists")
-		path = levelNavigation.get_simple_path(actor.global_position, player.global_position, false)
-		print(path)
-		actor.line2d.points = path
+		actor.path = levelNavigation.get_simple_path(actor.global_position, player.global_position, false)
+		print(actor.path)
+		actor.line2d.points = actor.path
 
 func _on_PlayerDetectionZone_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
