@@ -1,9 +1,8 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entity/Enemy/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://topdown-shooter/Spritesheet/spritesheet_tiles.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://topdown-shooter/PNG/Tiles/tile_04.png" type="Texture" id=4]
+[ext_resource path="res://Entity/Player/Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0.0748291, 0, 64.031, 0.0593262, 63.7985, 15.4088, 14.9592, 15.1762, 14.9592, 63.5504, 0, 63.5504 )
@@ -354,34 +353,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [node name="World" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-margin_left = -512.0
-margin_top = -320.0
-margin_right = 704.0
-margin_bottom = 512.0
-texture = ExtResource( 4 )
-stretch_mode = 2
-
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 4 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 320, 192 )
-
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Player" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -110, 785 )
-z_index = 2
-
-[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-current = true
-
-[node name="Enemy" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 162, 762 )
-z_index = 2
 
 [node name="LevelNavigator" type="Navigation2D" parent="YSort" groups=["levelnavigation"]]
 
@@ -391,3 +363,9 @@ collision_mask = 7
 bake_navigation = true
 format = 1
 tile_data = PoolIntArray( -196613, 0, 7, -196612, 0, 196612, -196611, 0, 196612, -196610, 0, 196612, -196609, 0, 196612, -262144, 0, 196612, -262143, 0, 196612, -262142, 0, 196612, -262141, 0, 196612, -262140, 0, 196612, -262139, 0, 196612, -262138, 0, 196612, -262137, 0, 196612, -262136, 0, 8, -131077, 0, 131076, -196600, 0, 131077, -65541, 0, 131076, -65539, 0, 0, -65538, 0, 2, -65537, 0, 2, -131072, 0, 2, -131071, 0, 2, -131070, 0, 2, -131069, 0, 1, -131064, 0, 131077, -5, 0, 131076, -65533, 0, 65538, -65528, 0, 131077, 65531, 0, 131076, 3, 0, 65537, 8, 0, 131077, 131067, 0, 131076, 65538, 0, 131076, 65541, 0, 131077, 65544, 0, 131077, 196603, 0, 131076, 131074, 0, 131076, 131077, 0, 131077, 131080, 0, 131077, 262139, 0, 65543, 262140, 0, 196613, 262141, 0, 196613, 262142, 0, 196613, 262143, 0, 196613, 196608, 0, 196613, 196609, 0, 196613, 196610, 0, 196613, 196611, 0, 196613, 196612, 0, 196613, 196613, 0, 196613, 196614, 0, 196613, 196615, 0, 196613, 196616, 0, 65544, 655355, 2, 0, 655356, 2, 0, 655357, 2, 0, 655358, 2, 0, 655359, 2, 0, 589824, 2, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 720891, 2, 0, 720892, 1, 0, 720893, 1, 0, 720894, 1, 0, 720895, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 2, 0, 786427, 2, 0, 786428, 1, 0, 786429, 2, 0, 786430, 2, 0, 786431, 2, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 2, 0, 851963, 2, 0, 851964, 1, 0, 851965, 1, 0, 851966, 1, 0, 851967, 1, 0, 786432, 1, 0, 786433, 2, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 2, 0, 917499, 2, 0, 917500, 1, 0, 917501, 1, 0, 917502, 1, 0, 917503, 1, 0, 851968, 1, 0, 851969, 1, 0, 851970, 1, 0, 851971, 1, 0, 851972, 1, 0, 851973, 2, 0, 983035, 2, 0, 983036, 2, 0, 983037, 2, 0, 983038, 2, 0, 983039, 2, 0, 917504, 2, 0, 917505, 2, 0, 917506, 2, 0, 917507, 2, 0, 917508, 2, 0, 917509, 2, 0 )
+
+[node name="EnemyBase" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 165, 771 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -118, 811 )
