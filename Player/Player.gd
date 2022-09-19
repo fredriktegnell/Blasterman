@@ -2,14 +2,15 @@ extends KinematicBody2D
 class_name Player
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 
 const MAX_SPEED = 100
+const MAX_HP = 100
+var current_hp = 100
 var velocity = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	pass
 	
