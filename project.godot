@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/ContributorClass.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "EnemyBase",
+"language": "GDScript",
+"path": "res://Entity/Enemy/EnemyBase.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "EntityBase",
+"language": "GDScript",
+"path": "res://Entity/EntityBase.gd"
+}, {
 "base": "PanelContainer",
 "class": "GistItem",
 "language": "GDScript",
@@ -27,7 +37,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/Player.gd"
+"path": "res://Entity/Player/Player.gd"
 }, {
 "base": "PanelContainer",
 "class": "RepositoryItem",
@@ -36,6 +46,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ContributorClass": "",
+"EnemyBase": "",
+"EntityBase": "",
 "GistItem": "",
 "InvitationItem": "",
 "Player": "",
@@ -84,6 +96,13 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_1="Enviroment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Projectile"
 
 [physics]
 
