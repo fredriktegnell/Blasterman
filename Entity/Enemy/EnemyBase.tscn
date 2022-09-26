@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entity/EntityBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/npc x1.png" type="Texture" id=2]
@@ -10,9 +10,6 @@ height = 8.0
 
 [sub_resource type="CapsuleShape2D" id=3]
 height = 10.0
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 86.0058
 
 [node name="EnemyBase" instance=ExtResource( 1 )]
 collision_layer = 4
@@ -44,21 +41,16 @@ shape = SubResource( 3 )
 [node name="AI" type="Node2D" parent="." index="4" groups=["enemy"]]
 script = ExtResource( 4 )
 
-[node name="PlayerDetectionZone" type="Area2D" parent="AI" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone" index="0"]
-visible = false
-shape = SubResource( 4 )
-
 [node name="Line2D" type="Line2D" parent="." index="5"]
+scale = Vector2( 2, 2 )
+points = PoolVector2Array( 0, 0 )
 default_color = Color( 1, 0.4, 0.4, 1 )
 
 [node name="LineOfSight" type="RayCast2D" parent="." index="6"]
 enabled = true
 cast_to = Vector2( 100, 0 )
 collision_mask = 3
-
-[connection signal="body_entered" from="AI/PlayerDetectionZone" to="AI" method="_on_PlayerDetectionZone_body_entered"]
+collide_with_areas = true
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

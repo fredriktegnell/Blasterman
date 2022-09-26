@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Projectiles/PlayerTestWeapon.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 3 )
+
+[node name="PlayerTestWeapon" groups=["projectile"] instance=ExtResource( 2 )]
+z_index = 1
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 200
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_PlayerTestWeapon_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_PlayerTestWeapon_body_entered"]
