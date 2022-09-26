@@ -46,7 +46,8 @@ func _process(_delta: float) -> void:
 					navigate()
 					actor.velocity = actor.move_and_slide(actor.velocity)
 			else:
-				print("In the engage state but no player and/or actor")
+				#print("In the engage state but no player and/or actor")
+				pass
 		_: # default case
 			print("Error: state error")
 

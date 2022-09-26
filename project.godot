@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://addons/github-integration/scripts/ContributorClass.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Enemy/Enemy.gd"
-}, {
-"base": "KinematicBody2D",
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://Entity/Enemy/EnemyBase.gd"
@@ -51,7 +46,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ContributorClass": "",
-"Enemy": "",
 "EnemyBase": "",
 "EntityBase": "",
 "GistItem": "",

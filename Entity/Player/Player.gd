@@ -18,3 +18,5 @@ func get_input_direction() -> Vector2:
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 	return input_vector
+
+
