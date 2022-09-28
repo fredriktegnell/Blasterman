@@ -41,6 +41,9 @@ shape = SubResource( 3 )
 [node name="AI" type="Node2D" parent="." index="4" groups=["enemy"]]
 script = ExtResource( 4 )
 
+[node name="PatrolTimer" type="Timer" parent="AI" index="0"]
+one_shot = true
+
 [node name="Line2D" type="Line2D" parent="." index="5"]
 scale = Vector2( 2, 2 )
 points = PoolVector2Array( 0, 0 )
@@ -51,6 +54,14 @@ enabled = true
 cast_to = Vector2( 100, 0 )
 collision_mask = 3
 collide_with_areas = true
+
+[node name="BlockDetector" type="RayCast2D" parent="." index="7"]
+enabled = true
+cast_to = Vector2( 30, 0 )
+collision_mask = 65
+collide_with_areas = true
+
+[connection signal="timeout" from="AI/PatrolTimer" to="AI" method="_on_PatrolTimer_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
