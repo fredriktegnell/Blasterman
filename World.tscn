@@ -832,15 +832,14 @@ z_index = 0
 z_as_relative = true
 collision_mask = 39
 
-[node name="BasicSpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[connection signal="timeout" from="BasicSpawnTimer" to="." method="_on_BasicSpawnTimer_timeout"]
-collision_mask = 55
-
 [node name="Lever" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 40, 184 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="BasicSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="BasicSpawnTimer" to="." method="_on_BasicSpawnTimer_timeout"]
