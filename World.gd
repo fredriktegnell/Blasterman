@@ -12,6 +12,7 @@ var spawn_amount = 1
 var wave_counter = 0
 
 func _ready():
+
 	randomize()
 	
 func _on_BasicSpawnTimer_timeout():
