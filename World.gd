@@ -1,6 +1,7 @@
 extends Node2D
 
 const EnemyBase = preload("res://Entity/Enemy/EnemyBase.tscn")
+
 #var rng = RandomNumberGenerator.new()
 const max_x = 350
 const max_y = 420
@@ -9,6 +10,7 @@ const min_y = -240
 
 
 func _ready():
+
 	randomize()
 	for i in 10:
 		var Enemy = EnemyBase.instance()
