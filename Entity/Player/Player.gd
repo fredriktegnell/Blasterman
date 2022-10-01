@@ -1,12 +1,13 @@
 extends "res://Entity/EntityBase.gd"
 class_name Player
 
-export(PackedScene) var TEST_WEAPON: PackedScene = preload("res://Projectiles/PlayerTestWeapon.tscn")
-export(PackedScene) var PISTOL_BULLET: PackedScene = preload("res://Projectiles/PistolBullet.tscn")
+
 onready var hurtbox = $Hurtbox
+onready var weapon = $Weapon
+# get_tree().current_scene
 
 func _ready():
-	pass
+	weapon.connect("weapon_fired", self, "shoot")
 	
 func _physics_process(_delta):
 	var input_vector = get_input_direction()
@@ -21,26 +22,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		#var test_weapon_direction = self.global_position.direction_to(get_global_mouse_position())
 		#throw_weapon(test_weapon_direction)
 		#var shooting_direction = self.global_position.direction_to(get_global_mouse_position())
-		shoot()
+		weapon.shoot()
 		
-func shoot():
-	if PISTOL_BULLET:
-		var pistol_bullet = PISTOL_BULLET.instance() # init pistol_bullet
-		get_tree().current_scene.add_child(pistol_bullet) # add the instance to the scene
-		pistol_bullet.global_position = self.global_position
-		var target = get_global_mouse_position()
-		var direction_to_mouse = self.global_position.direction_to(target).normalized()
-		pistol_bullet.set_direction(direction_to_mouse)
-		
-func throw_weapon():
-	if TEST_WEAPON:
-		var test_weapon = TEST_WEAPON.instance() # init test_weapon
-		get_tree().current_scene.add_child(test_weapon) # add the instance to the scene
-		test_weapon.global_position = self.global_position 
-		var target = get_global_mouse_position()
-		var direction_to_mouse = test_weapon.global_position.direction_to(target).normalized()
-		test_weapon.set_direction(direction_to_mouse)
-		
+func shoot(bullet_instance, location: Vector2, direction: Vector2):
+	emit_signal("player_fired_bullet", bullet_instance, location, direction)
+			
 func get_input_direction() -> Vector2:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

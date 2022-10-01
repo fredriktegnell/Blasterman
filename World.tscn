@@ -5,7 +5,7 @@
 [ext_resource path="res://Entity/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World.gd" type="Script" id=4]
 [ext_resource path="res://roguelike-pack/Spritesheet/roguelikeSheet_transparent.png" type="Texture" id=5]
-[ext_resource path="res://Projectiles/PistolBullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
 points = PoolVector2Array( 15.9412, 15.7763, 0.0490875, 15.7763, 0.0490875, 2.20982, 15.9412, 2.20982 )
@@ -825,7 +825,11 @@ z_index = 0
 z_as_relative = true
 collision_mask = 53
 current_hp = 100
-PISTOL_BULLET = ExtResource( 6 )
+
+[node name="Weapon" type="Node2D" parent="YSort/Player"]
+position = Vector2( -210, 374 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 6 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 37, -23 )
