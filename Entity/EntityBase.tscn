@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entity/EntityBase.gd" type="Script" id=1]
 [ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/EntityHealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -24,6 +25,10 @@ shape = SubResource( 1 )
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
+
+[node name="EntityHealthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -11.0
+margin_right = 29.0
 
 [connection signal="died" from="." to="." method="_on_EntityBase_died"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

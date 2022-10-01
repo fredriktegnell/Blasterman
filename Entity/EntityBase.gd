@@ -13,6 +13,7 @@ var velocity = Vector2.ZERO
 
 onready var sprite = $Sprite
 onready var collShape = $CollisionShape2D
+onready var healthBar = $EntityHealthBar
 	
 func set_max_speed(new_speed):
 	max_speed = new_speed
@@ -21,13 +22,17 @@ func set_current_hp(value):
 	if value != current_hp:
 		current_hp = clamp(value, 0, max_hp)
 		emit_signal("hp_changed", current_hp)
+		healthBar.animate_hp_change(current_hp)
 		if current_hp == 0:
 			emit_signal("died")
+		elif current_hp != max_hp:
+			healthBar.show()
 	
 func set_max_hp(value):
 	if value != max_hp:
 		max_hp = max(0, value)
 		emit_signal("max_hp_changed", max_hp)
+		healthBar.max_value = max_hp
 		self.current_hp = current_hp
 		
 
