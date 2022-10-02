@@ -5,13 +5,16 @@ signal weapon_fired(bullet_instance, location, direction)
 #export(PackedScene) var Test_Weapon: PackedScene = preload("res://Projectiles/PlayerTestWeapon.tscn")
 export(PackedScene) var Bullet: PackedScene = preload("res://Projectiles/Bullet.tscn")
 
+onready var endOfGun = $EndOfGun
+onready var gunDirection = $GunDirection
+
 func shoot():
 	if Bullet:
 		var bullet_instance = Bullet.instance() # init bullet_instance
 		get_tree().current_scene.add_child(bullet_instance) # add the instance to the scene
-		bullet_instance.global_position = get_parent().global_position
+		bullet_instance.global_position = endOfGun.global_position
 		var target = get_global_mouse_position()
-		var direction_to_mouse = get_parent().global_position.direction_to(target).normalized()
+		var direction_to_mouse = gunDirection.global_position.direction_to(target).normalized()
 		bullet_instance.set_direction(direction_to_mouse)
 		emit_signal("weapon_fired", bullet_instance, get_parent().global_position)
 

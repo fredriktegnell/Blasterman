@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://topdown-shooter/Tilesheet/tilesheet_complete.png" type="Texture" id=2]
+
+[node name="Weapon" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="PlaceholderSprite" type="Sprite" parent="."]
+position = Vector2( 8.875, 0.5 )
+scale = Vector2( 0.34375, 0.294118 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1556, 528, 24, 34 )
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( 12.5, -4 )
+
+[node name="GunDirection" type="Position2D" parent="."]
+position = Vector2( 9.5, -1 )
