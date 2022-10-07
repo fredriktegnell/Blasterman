@@ -1,15 +1,29 @@
 extends Node2D
 
 signal weapon_fired(bullet_instance, location, direction)
+signal weapon_out_of_ammo
 
 #export(PackedScene) var Test_Weapon: PackedScene = preload("res://Projectiles/PlayerTestWeapon.tscn")
 export(PackedScene) var Bullet: PackedScene = preload("res://Projectiles/Bullet.tscn")
 
+var max_ammo: int = 10
+var current_ammo: int = max_ammo
+
 onready var endOfGun = $EndOfGun
 onready var gunDirection = $GunDirection
 
+func start_reload():
+	# animation and/or sound for reload here 
+	print("reloading")
+	_stop_reload() # the animation player shall be used to call _stop_reload() instead of here 
+	# see here how to do it: https://www.youtube.com/watch?v=YAoueKaqhkc&list=PLpwc3ughKbZexDyPexHN2MXLliKAovkpl&index=11
+
+func _stop_reload(): # _ before function name = private function 
+	current_ammo  = max_ammo
+	emit_signal("weapon_ammo_changed", current_ammo)
+
 func shoot():
-	if Bullet:
+	if Bullet and current_ammo != 0:
 		var bullet_instance = Bullet.instance() # init bullet_instance
 		get_tree().current_scene.add_child(bullet_instance) # add the instance to the scene
 		bullet_instance.global_position = endOfGun.global_position
@@ -17,6 +31,9 @@ func shoot():
 		var direction_to_mouse = gunDirection.global_position.direction_to(target).normalized()
 		bullet_instance.set_direction(direction_to_mouse)
 		emit_signal("weapon_fired", bullet_instance, get_parent().global_position)
+		current_ammo -= 1
+		if current_ammo == 0:
+			emit_signal("weapon_out_of_ammo")
 
 
 #func throw_weapon():

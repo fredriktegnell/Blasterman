@@ -8,6 +8,7 @@ onready var weapon = $Weapon
 
 func _ready():
 	weapon.connect("weapon_fired", self, "shoot")
+	weapon.connect("weapon_out_of_ammo", self, "reload")
 	
 func _physics_process(_delta):
 	var input_vector = get_input_direction()
@@ -23,9 +24,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		#throw_weapon(test_weapon_direction)
 		#var shooting_direction = self.global_position.direction_to(get_global_mouse_position())
 		weapon.shoot()
+	elif event.is_action_pressed("action_reload"):
+		weapon.start_reload()
+		
+		
 		
 func shoot(bullet_instance, location: Vector2, direction: Vector2):
 	emit_signal("player_fired_bullet", bullet_instance, location, direction)
+			
+func reload():
+	weapon.start_reload()
 			
 func get_input_direction() -> Vector2:
 	var input_vector = Vector2.ZERO
