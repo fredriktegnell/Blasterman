@@ -4,18 +4,19 @@
 [ext_resource path="res://topdown-shooter/Tilesheet/tilesheet_complete.png" type="Texture" id=2]
 
 [node name="Weapon" type="Node2D"]
+position = Vector2( 10, 9 )
+rotation = 0.942478
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="PlaceholderSprite" type="Sprite" parent="."]
-position = Vector2( 8.875, 0.5 )
 scale = Vector2( 0.34375, 0.294118 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 1556, 528, 24, 34 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( 12.5, -4 )
-
-[node name="GunDirection" type="Position2D" parent="."]
-position = Vector2( 9.5, -1 )
+position = Vector2( 3.43853, -4.14098 )

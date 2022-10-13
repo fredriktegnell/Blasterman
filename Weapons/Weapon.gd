@@ -10,7 +10,7 @@ var max_ammo: int = 10
 var current_ammo: int = max_ammo
 
 onready var endOfGun = $EndOfGun
-onready var gunDirection = $GunDirection
+
 
 func start_reload():
 	# animation and/or sound for reload here 
@@ -27,8 +27,7 @@ func shoot():
 		var bullet_instance = Bullet.instance() # init bullet_instance
 		get_tree().current_scene.add_child(bullet_instance) # add the instance to the scene
 		bullet_instance.global_position = endOfGun.global_position
-		var target = get_global_mouse_position()
-		var direction_to_mouse = gunDirection.global_position.direction_to(target).normalized()
+		var direction_to_mouse = (endOfGun.global_position - global_position).normalized()
 		bullet_instance.set_direction(direction_to_mouse)
 		emit_signal("weapon_fired", bullet_instance, get_parent().global_position)
 		current_ammo -= 1
