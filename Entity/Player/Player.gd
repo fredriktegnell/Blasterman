@@ -4,6 +4,7 @@ class_name Player
 
 onready var hurtbox = $Hurtbox
 onready var weapon = $Weapon
+
 # get_tree().current_scene
 
 func _ready():
@@ -40,6 +41,8 @@ func get_input_direction() -> Vector2:
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
+
+		
 	return input_vector
 
 
