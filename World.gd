@@ -3,6 +3,7 @@ extends Node2D
 const EnemyBase = preload("res://Entity/Enemy/EnemyBase.tscn")
 onready var basic_spawn_timer = $BasicSpawnTimer
 
+
 #var rng = RandomNumberGenerator.new()
 const max_x = 350
 const max_y = -200
@@ -12,7 +13,7 @@ var spawn_amount = 1
 var wave_counter = 0
 
 func _ready():
-
+	
 	randomize()
 	
 func _on_BasicSpawnTimer_timeout():

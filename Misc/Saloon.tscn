@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://vacaroxa--generic-old-west-graphics--v.1.0/Generic Old West Graphicis/Buildings/buildings.png" type="Texture" id=1]
+
+[node name="Saloon" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 176, 224, 160 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -48, 18, -48, 32, -24, 32, -24, 40, -10, 40, -10, 26, -17, 26, -17, 18 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 24, 40, 24, 32, 48, 32, 48, 2, -48, 2, -48, 18, -17, 18, 17, 18, 17, 26, 10, 26, 10, 33, 10, 40 )
