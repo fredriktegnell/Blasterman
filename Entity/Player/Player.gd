@@ -2,6 +2,7 @@ extends "res://Entity/EntityBase.gd"
 class_name Player
 
 
+
 onready var hurtbox = $Hurtbox
 onready var weapon_manager = $WeaponManager
 
@@ -10,6 +11,7 @@ onready var weapon_manager = $WeaponManager
 func _ready():
 	weapon_manager.connect("weapon_fired", self, "shoot")
 	weapon_manager.connect("weapon_out_of_ammo", self, "reload")
+	weapon_manager.connect("weapon_changed", self, "set_weapon")
 	
 func _physics_process(_delta):
 	var input_vector = get_input_direction()
@@ -19,16 +21,10 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 	move()
 	look_at(get_global_mouse_position())
-	
-
-		
-		
 		
 func shoot(bullet_instance, location: Vector2, direction: Vector2):
 	emit_signal("player_fired_bullet", bullet_instance, location, direction)
-			
-
-			
+		
 func get_input_direction() -> Vector2:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Weapon
+
 signal weapon_fired(bullet_instance, location, direction)
 signal weapon_out_of_ammo
 
@@ -14,13 +16,22 @@ onready var endOfGun = $EndOfGun
 
 func start_reload():
 	# animation and/or sound for reload here 
-	print("reloading")
+	#print("reloading")
 	_stop_reload() # the animation player shall be used to call _stop_reload() instead of here 
 	# see here how to do it: https://www.youtube.com/watch?v=YAoueKaqhkc&list=PLpwc3ughKbZexDyPexHN2MXLliKAovkpl&index=11
 
 func _stop_reload(): # _ before function name = private function 
 	current_ammo  = max_ammo
 	emit_signal("weapon_ammo_changed", current_ammo)
+
+func set_current_ammo(new_ammo: int):
+	var actual_ammo = clamp(new_ammo, 0, max_ammo)
+	if actual_ammo != current_ammo:
+		current_ammo = actual_ammo
+		if current_ammo == 0:
+			emit_signal("weapon_out_of_ammo")
+
+		emit_signal("weapon_ammo_changed", current_ammo)
 
 func shoot():
 	if Bullet and current_ammo != 0:
