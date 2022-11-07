@@ -52,7 +52,6 @@ visible = false
 script = ExtResource( 6 )
 
 [node name="Pistol" parent="WeaponManager" index="0" instance=ExtResource( 5 )]
-rotation = 0.820305
 
 [node name="SubMachineGun" parent="WeaponManager" index="1" instance=ExtResource( 7 )]
 visible = false

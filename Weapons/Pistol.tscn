@@ -1,5 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
 
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/weapon_silencer.png-dca8c186951e83d15620d9e98985ebe1.stex"
+
 [node name="Pistol" instance=ExtResource( 1 )]
+rotation = 0.0
+
+[node name="PlaceholderSprite" parent="." index="0"]
+texture = SubResource( 1 )
+region_enabled = false
+
+[node name="EndOfGun" parent="." index="1"]
+position = Vector2( 4.297, 0 )
