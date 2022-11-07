@@ -11,6 +11,7 @@ func _physics_process(delta):
 	
 func set_direction(direction: Vector2):
 	self.direction = direction
+	self.rotation += direction.angle()
 
 func destroy():
 	queue_free()

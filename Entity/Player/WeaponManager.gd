@@ -14,6 +14,11 @@ func _ready() -> void:
 	current_weapon.connect("weapon_fired", self, "shoot")
 	current_weapon.connect("weapon_out_of_ammo", self, "reload")
 	
+func _process(delta: float) -> void:
+	if current_weapon.auto and Input.is_action_pressed("action_attack"):
+		current_weapon.shoot()
+		
+
 func get_current_weapon() -> Weapon:
 	return current_weapon
 	
@@ -30,7 +35,7 @@ func switch_weapon(weapon: Weapon):
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("action_attack"):
+	if not current_weapon.auto and event.is_action_pressed("action_attack"):
 		#var test_weapon_direction = self.global_position.direction_to(get_global_mouse_position())
 		#throw_weapon(test_weapon_direction)
 		#var shooting_direction = self.global_position.direction_to(get_global_mouse_position())

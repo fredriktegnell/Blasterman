@@ -1,28 +1,32 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Projectiles/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Random_UI/ui x1.png" type="Texture" id=2]
+[ext_resource path="res://topdown-shooter/Spritesheet/onlyObjects_default.png" type="Texture" id=2]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.54435, 4.50912 )
+extents = Vector2( 2, 5.01119 )
 
 [node name="PistolBullet" groups=["projectile"] instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 speed = 200
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 0.0288692, 0.0790651 )
+visible = false
+position = Vector2( 0, -0.0111902 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
-position = Vector2( 0.25, 0 )
-scale = Vector2( 1.05556, 1 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 106.796, 267.351, 9.40791, 10.1429 )
+region_rect = Rect2( 198, 46, 4, 10 )
 
 [connection signal="area_entered" from="." to="." method="_on_PistolBullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_PistolBullet_body_entered"]

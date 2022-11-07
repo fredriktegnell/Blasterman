@@ -5,14 +5,18 @@ class_name Weapon
 signal weapon_fired(bullet_instance, location, direction)
 signal weapon_out_of_ammo
 
+export (int) var max_ammo: int = 10 
+export (bool) var auto: bool = false
+
 #export(PackedScene) var Test_Weapon: PackedScene = preload("res://Projectiles/PlayerTestWeapon.tscn")
 export(PackedScene) var Bullet: PackedScene = preload("res://Projectiles/Bullet.tscn")
 
-var max_ammo: int = 10
 var current_ammo: int = max_ammo
 
 onready var endOfGun = $EndOfGun
 
+func _ready() -> void:
+	current_ammo = max_ammo
 
 func start_reload():
 	# animation and/or sound for reload here 
