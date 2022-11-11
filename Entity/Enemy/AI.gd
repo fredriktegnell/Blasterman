@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 		State.PATROL:
 			actor.block_detector.look_at(patrol_location) # temporary collision handling 
 			if not patrol_location_reached:
-				var block_collider = actor.block_detector.get_collider()
+				var block_collider = actor.block_detector.is_colliding()
 				if actor.global_position.distance_to(patrol_location) < 5 or block_collider:
 					patrol_location_reached = true
 					actor_velocity = Vector2.ZERO
