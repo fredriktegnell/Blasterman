@@ -49,8 +49,6 @@ func _physics_process(_delta: float) -> void:
 				actor.move_and_slide(actor_velocity)
 		State.ENGAGE:
 			if player != null and actor != null and levelNavigation != null:
-				#actor.rotation = actor.global_position.direction_to(player.global_position).angle() # will work with real top-down sprite
-				#actor.velocity = actor.global_position.direction_to(player.global_position) * actor.max_speed
 				generate_path()
 				navigate()
 				actor.velocity = actor.move_and_slide(actor.velocity)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mountain-trials.ogg-9c201d7d0cea14146aef337a16068f9f.oggstr"
+
+[deps]
+
+source_file="res://Sound/mountain-trials.ogg"
+dest_files=[ "res://.import/mountain-trials.ogg-9c201d7d0cea14146aef337a16068f9f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
