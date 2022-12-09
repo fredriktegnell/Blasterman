@@ -1,12 +1,17 @@
 extends Node2D
 
+class_name WeaponManager
+
 signal weapon_changed(new_weapon)
 
 onready var current_weapon: Weapon = $Pistol
 
 var weapons: Array = []
 
+onready var available_weapons: Array = [current_weapon]
+
 func _ready() -> void:
+	print(available_weapons)
 	weapons = get_children()
 	for weapon in weapons:
 		weapon.hide()
@@ -18,23 +23,27 @@ func _process(delta: float) -> void:
 	if current_weapon.auto and Input.is_action_pressed("action_attack"):
 		current_weapon.shoot()
 		
-
 func get_current_weapon() -> Weapon:
 	return current_weapon
 	
 func reload():
 	current_weapon.start_reload()
 	
+func add_weapon(found_weapon: Weapon):
+	if not available_weapons.has(found_weapon):
+		available_weapons.append(found_weapon)
+	
 func switch_weapon(weapon: Weapon):
-	if weapon == current_weapon:
+	if weapon == current_weapon or not available_weapons.has(weapon):
 		return
-	current_weapon.hide()
-	weapon.show()
-	current_weapon = weapon
-	current_weapon.connect("weapon_fired", self, "shoot")
-	current_weapon.connect("weapon_out_of_ammo", self, "reload")
-	emit_signal("weapon_changed", current_weapon)
-
+	else:
+		current_weapon.hide()
+		weapon.show()
+		current_weapon = weapon
+		current_weapon.connect("weapon_fired", self, "shoot")
+		current_weapon.connect("weapon_fired", self, "shoot")
+		current_weapon.connect("weapon_out_of_ammo", self, "reload")
+		emit_signal("weapon_changed", current_weapon)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not current_weapon.auto and event.is_action_pressed("action_attack"):

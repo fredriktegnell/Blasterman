@@ -2,11 +2,9 @@ extends "res://Entity/EntityBase.gd"
 class_name Player
 
 
-
 onready var hurtbox = $Hurtbox
 onready var weapon_manager = $WeaponManager
-
-
+onready var chest = $Chest
 
 func _ready():
 	weapon_manager.connect("weapon_fired", self, "shoot")
@@ -33,5 +31,3 @@ func get_input_direction() -> Vector2:
 
 		
 	return input_vector
-
-

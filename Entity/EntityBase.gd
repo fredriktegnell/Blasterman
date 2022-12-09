@@ -48,6 +48,10 @@ func die():
 func receive_damage(base_damage: int):
 	self.current_hp -= base_damage
 	print(name + " recieved " + str(base_damage) + " damage")
+
+func receive_heal(heal_amount: int):
+	self.current_hp += heal_amount
+	print("healed")
 	
 func _on_Hurtbox_area_entered(hitbox):
 	receive_damage(hitbox.damage)

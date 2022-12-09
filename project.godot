@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Chest",
+"language": "GDScript",
+"path": "res://Misc/Chest.gd"
+}, {
 "base": "HBoxContainer",
 "class": "ContributorClass",
 "language": "GDScript",
@@ -48,8 +53,14 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Weapons/Weapon.gd"
+}, {
+"base": "Node2D",
+"class": "WeaponManager",
+"language": "GDScript",
+"path": "res://Entity/Player/WeaponManager.gd"
 } ]
 _global_script_class_icons={
+"Chest": "",
 "ContributorClass": "",
 "EnemyBase": "",
 "EntityBase": "",
@@ -57,7 +68,8 @@ _global_script_class_icons={
 "InvitationItem": "",
 "Player": "",
 "RepositoryItem": "",
-"Weapon": ""
+"Weapon": "",
+"WeaponManager": ""
 }
 
 [application]

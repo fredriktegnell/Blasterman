@@ -65,13 +65,3 @@ func shoot():
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
 
-
-#func throw_weapon():
-#	if Test_Weapon:
-#		var test_weapon = Test_Weapon.instance() # init test_weapon
-#		get_tree().current_scene.add_child(test_weapon) # add the instance to the scene
-#		test_weapon.global_position = self.global_position 
-#		var target = get_global_mouse_position()
-#		var direction_to_mouse = test_weapon.global_position.direction_to(target).normalized()
-#		test_weapon.set_direction(direction_to_mouse)
-#		emit_signal("weapon_fired", test_weapon, self.global_position)
