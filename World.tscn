@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://Entity/Enemy/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Object/Lever/Lever.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Misc/HillFinish.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Misc/Statue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Misc/CellDoor.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Sound/object.wav" type="AudioStream" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
 points = PoolVector2Array( 15.9412, 15.7763, 0.0490875, 15.7763, 0.0490875, 2.20982, 15.9412, 2.20982 )
@@ -2105,5 +2106,8 @@ __meta__ = {
 [node name="BasicSpawnTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="SoundChest" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 21 )
 
 [connection signal="timeout" from="BasicSpawnTimer" to="." method="_on_BasicSpawnTimer_timeout"]

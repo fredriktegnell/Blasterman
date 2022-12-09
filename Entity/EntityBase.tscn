@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entity/EntityBase.gd" type="Script" id=1]
 [ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/EntityHealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sound/death.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -29,6 +30,9 @@ shape = SubResource( 1 )
 [node name="EntityHealthBar" parent="." instance=ExtResource( 4 )]
 margin_left = -11.0
 margin_right = 29.0
+
+[node name="SoundHP" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="died" from="." to="." method="_on_EntityBase_died"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

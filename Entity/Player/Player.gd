@@ -31,3 +31,5 @@ func get_input_direction() -> Vector2:
 
 		
 	return input_vector
+
+func get_class(): return "Player"

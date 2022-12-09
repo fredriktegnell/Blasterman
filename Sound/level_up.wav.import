@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level_up.wav-0f0b3e0d4fad00f57363356e4a2d3ecd.sample"
+
+[deps]
+
+source_file="res://Sound/level_up.wav"
+dest_files=[ "res://.import/level_up.wav-0f0b3e0d4fad00f57363356e4a2d3ecd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -17,17 +17,14 @@ var current_ammo: int = max_ammo
 onready var endOfGun = $EndOfGun
 onready var animation_player = $AnimationPlayer
 onready var attack_cooldown = $AttackCooldown
-
+onready var sound_ammo = $SoundAmmo
+onready var sound_shooting = $SoundShooting
 
 func _ready() -> void:
 	current_ammo = max_ammo
 
 func start_reload():
-	# animation and/or sound for reload here 
-	#print("reloading")
-	animation_player.play("reload")
-	#_stop_reload() # the animation player shall be used to call _stop_reload() instead of here 
-	# see here how to do it: https://www.youtube.com/watch?v=YAoueKaqhkc&list=PLpwc3ughKbZexDyPexHN2MXLliKAovkpl&index=11
+	animation_player.play("reload") # animation player calls on _stop_reload() when it's finished 
 
 func _stop_reload(): # _ before function name = private function 
 	current_ammo  = max_ammo
@@ -60,8 +57,15 @@ func shoot():
 			var direction_to_mouse = (endOfGun.global_position - global_position).normalized()
 			bullet_instance.set_direction(direction_to_mouse)
 			emit_signal("weapon_fired", bullet_instance, get_parent().global_position)
+		sound_shooting.play()
 		attack_cooldown.start()
 		current_ammo -= 1
+		print(current_ammo)
+		print(max_ammo)
+
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
+		elif max_ammo / current_ammo > 3:
+			sound_ammo.play()
+			
 

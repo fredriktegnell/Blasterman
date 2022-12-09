@@ -14,7 +14,8 @@ var velocity = Vector2.ZERO
 onready var sprite = $Sprite
 onready var collShape = $CollisionShape2D
 onready var healthBar = $EntityHealthBar
-	
+onready var sound_hp = $SoundHP
+
 func set_max_speed(new_speed):
 	max_speed = new_speed
 
@@ -47,6 +48,9 @@ func die():
 
 func receive_damage(base_damage: int):
 	self.current_hp -= base_damage
+	print(get_class())
+	if get_class() == "Player" and self.current_hp <= 30:
+		sound_hp.play()
 	print(name + " recieved " + str(base_damage) + " damage")
 
 func receive_heal(heal_amount: int):

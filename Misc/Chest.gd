@@ -10,6 +10,7 @@ onready var shotgun = get_parent().get_parent().get_parent().get_node("YSort/Pla
 onready var smg = get_parent().get_parent().get_parent().get_node("YSort/Player/WeaponManager/SubMachineGun")
 onready var weapon_manager = get_parent().get_parent().get_parent().get_node("YSort/Player/WeaponManager")
 onready var player = get_parent().get_parent().get_parent().get_node("YSort/Player")
+onready var sound_chest = get_parent().get_parent().get_parent().get_node("SoundChest")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,17 +44,22 @@ func _physics_process(_delta: float)->void:
 func get_loot():
 	if self.name == "Chest":
 		print("found smg")
+		sound_chest.play()
 		weapon_manager.add_weapon(smg)
 	elif self.name == "Chest2":
 		print("found key")
+		sound_chest.play()
 	elif self.name == "Chest3":
 		print("found shotgun")
+		sound_chest.play()
 		weapon_manager.add_weapon(shotgun)
 	elif self.name == "Chest4":
 		print("found heal")	
+		sound_chest.play()
 		player.receive_heal(50)
 	elif self.name == "Chest5":
 		print("found heal")
+		sound_chest.play()
 		player.receive_heal(50)
 			
 
