@@ -4,6 +4,7 @@ const EnemyBase = preload("res://Entity/Enemy/EnemyBase.tscn")
 onready var basic_spawn_timer = $BasicSpawnTimer
 
 
+
 #var rng = RandomNumberGenerator.new()
 # coordinates of areas corners [min_x, max_x, min_y, max_y]
 const spawn_area_NW = [-170, -110, -220, -140] # spawn area located north west
@@ -19,6 +20,8 @@ var wave_counter = 0 # number of waves since increasing the amount of enemies sp
 func _ready():
 	randomize()
 	
+
+	
 func _on_BasicSpawnTimer_timeout():
 	var temp_spawn_area = spawn_areas[randi() % spawn_areas.size()] 
 	for n in spawn_amount:
@@ -32,3 +35,5 @@ func _on_BasicSpawnTimer_timeout():
 	if wave_counter == 1:
 		spawn_amount = spawn_amount + 1
 		wave_counter = 0
+
+

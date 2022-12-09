@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/TitleScreen/buttons/NewGameButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/TitleScreen/TitleScreen.png" type="Texture" id=2]
+[ext_resource path="res://UI/TitleScreen/buttons/LeaderBoardButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/TitleScreen/pixeboy-font/Pixeboy-z8XGD.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/TitleScreen/buttons/NewGameButton.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="TitleScreen" type="Control"]
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 160.0
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 280.0
+margin_bottom = 29.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 33.0
+margin_right = 280.0
+margin_bottom = 140.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 280.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+alignment = 1
+
+[node name="NewGame" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 13.0
+margin_bottom = 33.0
+script = ExtResource( 5 )
+
+[node name="LeaderBoard" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 48.0
+margin_bottom = 68.0
+size_flags_vertical = 0
+
+[node name="VersionLabel" type="Label" parent="Menu/CenterRow/Buttons"]
+margin_left = 102.0
+margin_top = 83.0
+margin_right = 178.0
+margin_bottom = 93.0
+size_flags_horizontal = 4
+custom_colors/font_color_shadow = Color( 0.321569, 0.0862745, 0.0862745, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+custom_fonts/font = SubResource( 1 )
+text = "Version 1.0"
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/NewGame" to="Menu/CenterRow/Buttons/NewGame" method="_on_NewGame_pressed"]

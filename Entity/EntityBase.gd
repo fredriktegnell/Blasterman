@@ -1,6 +1,5 @@
 extends KinematicBody2D
 class_name EntityBase
-
 signal max_hp_changed(new_max_hp)
 signal current_hp_changed(new_current_hp)
 signal died()
@@ -25,8 +24,11 @@ func set_current_hp(value):
 		healthBar.animate_hp_change(current_hp)
 		if current_hp == 0:
 			emit_signal("died")
+			
 		elif current_hp != max_hp:
 			healthBar.show()
+			
+		
 	
 func set_max_hp(value):
 	if value != max_hp:
@@ -55,4 +57,5 @@ func _on_Hurtbox_area_entered(hitbox):
 		hitbox.destroy()
 
 func _on_EntityBase_died():
+	
 	die()

@@ -63,8 +63,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Blasterman"
-run/main_scene="res://World.tscn"
+run/main_scene="res://UI/TitleScreen/TitleScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Death="*res://UI/Death.gd"
 
 [display]
 
