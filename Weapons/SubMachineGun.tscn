@@ -15,3 +15,6 @@ region_enabled = false
 
 [node name="EndOfGun" parent="." index="1"]
 position = Vector2( 5.674, 0 )
+
+[node name="AttackCooldown" parent="." index="3"]
+wait_time = 0.1

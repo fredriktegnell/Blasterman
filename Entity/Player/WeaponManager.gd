@@ -31,8 +31,10 @@ func switch_weapon(weapon: Weapon):
 	current_weapon.hide()
 	weapon.show()
 	current_weapon = weapon
+	current_weapon.connect("weapon_fired", self, "shoot")
+	current_weapon.connect("weapon_out_of_ammo", self, "reload")
 	emit_signal("weapon_changed", current_weapon)
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not current_weapon.auto and event.is_action_pressed("action_attack"):
@@ -46,3 +48,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		switch_weapon(weapons[0])
 	elif event.is_action_pressed("weapon_2") and weapons[1]:
 		switch_weapon(weapons[1])
+	elif event.is_action_pressed("weapon_3") and weapons[2]:
+		switch_weapon(weapons[2])
