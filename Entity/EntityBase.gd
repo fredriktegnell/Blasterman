@@ -9,11 +9,13 @@ export(int) var current_hp: int = max_hp setget set_current_hp
 
 export(int) var max_speed = 50 setget set_max_speed
 var velocity = Vector2.ZERO
-
+onready var HUD = get_node("/root/UI/HUD")
 onready var sprite = $Sprite
 onready var collShape = $CollisionShape2D
 onready var healthBar = $EntityHealthBar
 onready var sound_hp = $SoundHP
+onready var globalvars = get_node("/root/Global")
+
 
 func set_max_speed(new_speed):
 	max_speed = new_speed
@@ -46,7 +48,12 @@ func move():
 	velocity = move_and_slide(velocity)
 
 func die():
-	queue_free()
+	if get_class() == "Player":
+		get_tree().change_scene("res://UI/TitleScreen/DeathScreen.tscn")
+	elif get_class() != "Player":
+		globalvars.score += 100
+		get_node("/root/World/HUD").update_score(globalvars.score)
+		queue_free()
 
 func receive_damage(base_damage: int):
 	self.current_hp -= base_damage

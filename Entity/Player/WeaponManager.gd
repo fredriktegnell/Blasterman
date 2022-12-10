@@ -5,6 +5,7 @@ class_name WeaponManager
 signal weapon_changed(new_weapon)
 
 onready var current_weapon: Weapon = $Pistol
+onready var HUD = get_parent().get_parent().get_parent().get_node("HUD")
 
 var weapons: Array = []
 
@@ -18,6 +19,7 @@ func _ready() -> void:
 	current_weapon.show()
 	current_weapon.connect("weapon_fired", self, "shoot")
 	current_weapon.connect("weapon_out_of_ammo", self, "reload")
+	HUD.update_weapon(current_weapon.get_class())
 	
 func _process(delta: float) -> void:
 	if current_weapon.auto and Input.is_action_pressed("action_attack"):
@@ -40,10 +42,12 @@ func switch_weapon(weapon: Weapon):
 		current_weapon.hide()
 		weapon.show()
 		current_weapon = weapon
+		HUD.update_weapon(current_weapon.get_class())
 		current_weapon.connect("weapon_fired", self, "shoot")
 		current_weapon.connect("weapon_fired", self, "shoot")
 		current_weapon.connect("weapon_out_of_ammo", self, "reload")
 		emit_signal("weapon_changed", current_weapon)
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not current_weapon.auto and event.is_action_pressed("action_attack"):

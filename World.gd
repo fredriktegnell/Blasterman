@@ -31,6 +31,7 @@ func _on_BasicSpawnTimer_timeout():
 		var random_y_position = rand_range(temp_spawn_area[2], temp_spawn_area[3])
 		Enemy.global_position = Vector2(random_x_position, random_y_position)
 		add_child(Enemy)
+		
 	wave_counter = wave_counter + 1
 	if wave_counter == 1:
 		spawn_amount = spawn_amount + 1
