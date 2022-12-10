@@ -11,3 +11,6 @@ var path: Array = [] # Destination positions
 func _ready():
 	set_max_speed(30)
 	ai.initialize(self)
+
+
+func get_class(): return "EnemyBase"

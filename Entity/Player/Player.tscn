@@ -64,13 +64,13 @@ visible = true
 [node name="WeaponManager" type="Node2D" parent="." index="7"]
 script = ExtResource( 6 )
 
-[node name="Pistol" parent="WeaponManager" index="0" instance=ExtResource( 5 )]
-
-[node name="SubMachineGun" parent="WeaponManager" index="1" instance=ExtResource( 7 )]
+[node name="SubMachineGun" parent="WeaponManager" index="0" instance=ExtResource( 7 )]
 visible = false
 
-[node name="Shotgun" parent="WeaponManager" index="2" instance=ExtResource( 8 )]
+[node name="Shotgun" parent="WeaponManager" index="1" instance=ExtResource( 8 )]
 visible = false
+
+[node name="Pistol" parent="WeaponManager" index="2" instance=ExtResource( 5 )]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
