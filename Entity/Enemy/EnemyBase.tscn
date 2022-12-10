@@ -58,6 +58,7 @@ points = PoolVector2Array( 0, 0 )
 default_color = Color( 1, 0.4, 0.4, 1 )
 
 [node name="LineOfSight" type="RayCast2D" parent="." index="6"]
+scale = Vector2( 2, 1 )
 enabled = true
 cast_to = Vector2( 100, 0 )
 collision_mask = 3

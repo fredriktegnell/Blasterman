@@ -1,18 +1,12 @@
 extends Node2D
 
 onready var _animation = $AnimationPlayer
+export(int) var fire_damage: int = 10
 
 func _ready():
 	_animation.play("idle")
-	
-	pass # Replace with function body.
 
 
+func _on_Area2D_body_entered(body):
+	body.receive_damage(fire_damage)
 
-func _on_Area2D_area_entered(area):
-	print("AJ")
-	pass # Replace with function body.
-
-
-func _on_Area2D_area_exited(area):
-	pass # Replace with function body.

@@ -27,9 +27,10 @@ func _on_Lever_area_exited(area:Area2D)->bool:
 	return inside
 
 func _ready()->void:
-	for pos in _bridge_nodes2:
-		get_node("../../LevelNavigation/WaterCollision").set_cell(pos[0],pos[1], 5)
-	get_node("../../LevelNavigation").remove_child(_bridge2)
+	pass
+	#for pos in _bridge_nodes2:
+	#	get_node("../../LevelNavigation/WaterCollision").set_cell(pos[0],pos[1], 5)
+	#get_node("../../LevelNavigation").remove_child(_bridge2)
 	
 func _physics_process(_delta: float)->void:
 	

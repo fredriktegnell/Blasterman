@@ -20,8 +20,6 @@ var wave_counter = 0 # number of waves since increasing the amount of enemies sp
 func _ready():
 	randomize()
 	
-
-	
 func _on_BasicSpawnTimer_timeout():
 	var temp_spawn_area = spawn_areas[randi() % spawn_areas.size()] 
 	for n in spawn_amount:

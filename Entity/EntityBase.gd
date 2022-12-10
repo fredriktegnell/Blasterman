@@ -62,5 +62,4 @@ func _on_Hurtbox_area_entered(hitbox):
 		hitbox.destroy()
 
 func _on_EntityBase_died():
-	
 	die()

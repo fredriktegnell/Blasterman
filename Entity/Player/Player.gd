@@ -11,6 +11,9 @@ func _ready():
 	weapon_manager.connect("weapon_out_of_ammo", self, "reload")
 	weapon_manager.connect("weapon_changed", self, "set_weapon")
 	
+
+	
+	
 func _physics_process(_delta):
 	var input_vector = get_input_direction()
 	if input_vector != Vector2.ZERO:
@@ -28,8 +31,6 @@ func get_input_direction() -> Vector2:
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
-
-		
 	return input_vector
 
 func get_class(): return "Player"

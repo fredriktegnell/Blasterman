@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 				print("In the engage state but no player and/or actor")
 				pass
 		_: # default case
-			print("Error: state error")
+			pass
 
 func check_player_in_detection() -> bool:
 	var collider = actor.los.get_collider()
