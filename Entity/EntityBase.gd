@@ -44,6 +44,7 @@ func move():
 
 func die():
 	if get_class() == "Player":
+		globalvars.leaderboard.append(globalvars.score)
 		get_tree().change_scene("res://UI/TitleScreen/DeathScreen.tscn")
 	elif get_class() != "Player":
 		globalvars.score += 100

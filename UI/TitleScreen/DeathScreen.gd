@@ -1,7 +1,7 @@
 extends Control
 
 onready var _death_animation = $TextureRect/AnimationPlayer
-
+onready var leaderboard = get_node("LeaderBoard")
 
 
 func _ready():
@@ -22,3 +22,10 @@ func _on_PlayAgainButton_pressed():
 func _on_QuitButton_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+	
+	
+
+
+func _on_LeaderBoard_pressed():
+	get_parent().add_child(leaderboard)
+	get_tree().change_scene("res://UI/TitleScreen/LeaderBoard.tscn")

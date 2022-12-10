@@ -25,6 +25,7 @@
 [ext_resource path="res://Sound/object.wav" type="AudioStream" id=23]
 [ext_resource path="res://UI/TitleScreen/DeathScreen.tscn" type="PackedScene" id=24]
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=25]
+[ext_resource path="res://UI/TitleScreen/LeaderBoard.tscn" type="PackedScene" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
 points = PoolVector2Array( 15.9412, 15.7763, 0.0490875, 15.7763, 0.0490875, 2.20982, 15.9412, 2.20982 )
@@ -2290,6 +2291,8 @@ margin_bottom = -320.0
 stream = ExtResource( 23 )
 
 [node name="HUD" parent="." instance=ExtResource( 25 )]
+
+[node name="LeaderBoard" parent="." instance=ExtResource( 26 )]
 
 [connection signal="died" from="YSort/Player" to="DeathScreen" method="_on_Player_died"]
 [connection signal="died" from="YSort/Enemy" to="HUD" method="_on_Enemy_died"]
