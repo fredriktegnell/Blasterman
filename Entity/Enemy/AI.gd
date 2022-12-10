@@ -26,10 +26,8 @@ func _ready():
 	var tree = get_tree()
 	if tree.has_group("levelnavigation"):
 		levelNavigation = tree.get_nodes_in_group("levelnavigation")[0]
-		print(levelNavigation)
 	if tree.has_group("player"):
 		player = tree.get_nodes_in_group("player")[0]
-		print(player)
 	set_state(State.PATROL)
 
 func _physics_process(_delta: float) -> void:
@@ -62,7 +60,6 @@ func check_player_in_detection() -> bool:
 	var collider = actor.los.get_collider()
 	if collider and collider.is_in_group("player"):
 		set_state(State.ENGAGE)
-		#player_spotted = true
 		return true
 	return false
 
@@ -94,9 +91,6 @@ func generate_path():
 		actor.path = levelNavigation.get_simple_path(actor.global_position, player.global_position, false)
 		actor.line2d.points = actor.path
 		
-
-		
-
 
 func _on_PatrolTimer_timeout():
 

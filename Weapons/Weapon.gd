@@ -60,12 +60,10 @@ func shoot():
 		sound_shooting.play()
 		attack_cooldown.start()
 		current_ammo -= 1
-		print(current_ammo)
-		print(max_ammo)
-
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
 		elif max_ammo / current_ammo > 3:
+			# show low ammo
 			sound_ammo.play()
 			
 
