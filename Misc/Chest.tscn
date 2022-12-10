@@ -61,7 +61,6 @@ anims/RESET = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
 position = Vector2( 0, 1 )
-rotation = -1.5708
 shape = SubResource( 3 )
 
 [connection signal="ready" from="AnimationPlayer" to="." method="_on_AnimationPlayer_ready"]

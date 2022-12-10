@@ -11,9 +11,6 @@ func _ready():
 	weapon_manager.connect("weapon_out_of_ammo", self, "reload")
 	weapon_manager.connect("weapon_changed", self, "set_weapon")
 	
-
-	
-	
 func _physics_process(_delta):
 	var input_vector = get_input_direction()
 	if input_vector != Vector2.ZERO:

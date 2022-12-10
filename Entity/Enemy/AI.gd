@@ -13,7 +13,7 @@ var current_state: int = -1 setget set_state
 var actor: KinematicBody2D = null
 var player: Player = null
 var levelNavigation: Navigation2D = null
-#var player_spotted: bool = false
+
 # Patrol State
 var origin: Vector2 = Vector2.ZERO
 var prev_patrol_location: Vector2 =  Vector2.ZERO
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	check_player_in_detection()
 	match current_state:
 		State.PATROL:
-			actor.block_detector.look_at(patrol_location) # temporary collision handling 
+			actor.block_detector.look_at(patrol_location) # basic collision handling 
 			if not patrol_location_reached:
 				var block_collider = actor.block_detector.is_colliding()
 				if actor.global_position.distance_to(patrol_location) < 5 or block_collider:
@@ -51,7 +51,6 @@ func _physics_process(_delta: float) -> void:
 				navigate()
 				actor.velocity = actor.move_and_slide(actor.velocity)
 			else:
-				print("In the engage state but no player and/or actor")
 				pass
 		_: # default case
 			pass

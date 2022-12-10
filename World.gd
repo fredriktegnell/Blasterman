@@ -3,9 +3,6 @@ extends Node2D
 const EnemyBase = preload("res://Entity/Enemy/EnemyBase.tscn")
 onready var basic_spawn_timer = $BasicSpawnTimer
 
-
-
-#var rng = RandomNumberGenerator.new()
 # coordinates of areas corners [min_x, max_x, min_y, max_y]
 const spawn_area_NW = [-170, -110, -220, -140] # spawn area located north west
 const spawn_area_NE = [250, 350, -250, -200] # spawn area located north east
@@ -15,7 +12,6 @@ const spawn_areas = [spawn_area_NW, spawn_area_NE, spawn_area_SE, spawn_area_SW]
 
 var spawn_amount = 1 # amount of enemies spawned in current wave
 var wave_counter = 0 # number of waves since increasing the amount of enemies spawned
-
 
 func _ready():
 	randomize()

@@ -9,13 +9,11 @@ export(int) var current_hp: int = max_hp setget set_current_hp
 
 export(int) var max_speed = 50 setget set_max_speed
 var velocity = Vector2.ZERO
-onready var HUD = get_node("/root/UI/HUD")
 onready var sprite = $Sprite
 onready var collShape = $CollisionShape2D
-onready var healthBar = $EntityHealthBar
+onready var healthBar = get_node("/root/World/HUD/EntityHealthBar")
 onready var sound_hp = $SoundHP
 onready var globalvars = get_node("/root/Global")
-
 
 func set_max_speed(new_speed):
 	max_speed = new_speed
@@ -27,12 +25,9 @@ func set_current_hp(value):
 		healthBar.animate_hp_change(current_hp)
 		if current_hp == 0:
 			emit_signal("died")
-			
 		elif current_hp != max_hp:
 			healthBar.show()
 			
-		
-	
 func set_max_hp(value):
 	if value != max_hp:
 		max_hp = max(0, value)
@@ -58,6 +53,7 @@ func die():
 func receive_damage(base_damage: int):
 	self.current_hp -= base_damage
 	if get_class() == "Player" and self.current_hp <= 30:
+		get_node("/root/World/HUD").show_message("Low health!")
 		sound_hp.play()
 
 func receive_heal(heal_amount: int):

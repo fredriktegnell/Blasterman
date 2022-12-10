@@ -30,7 +30,8 @@ func _physics_process(_delta: float)->void:
 			_door_right.play("open")
 			get_node("CollisionPolygon2D").disabled = true
 			open == true
-			
+		elif key_found == false:
+			get_node("/root/World/HUD").show_message("You need a key to open this door")
 		elif Input.is_action_just_pressed("ui_select") and open == true:
 			return
 

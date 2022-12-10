@@ -58,9 +58,6 @@ shape = SubResource( 3 )
 [node name="ContextBubble" parent="." index="5" instance=ExtResource( 4 )]
 visible = false
 
-[node name="EntityHealthBar" parent="." index="6"]
-visible = true
-
 [node name="WeaponManager" type="Node2D" parent="." index="7"]
 script = ExtResource( 6 )
 

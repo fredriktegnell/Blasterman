@@ -53,6 +53,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Line2D" type="Line2D" parent="." index="5"]
+visible = false
 scale = Vector2( 2, 2 )
 points = PoolVector2Array( 0, 0 )
 default_color = Color( 1, 0.4, 0.4, 1 )

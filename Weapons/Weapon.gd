@@ -9,7 +9,6 @@ export (int) var max_ammo: int = 10
 export (bool) var auto: bool = false
 export (bool) var shotgun: bool = false
 
-#export(PackedScene) var Test_Weapon: PackedScene = preload("res://Projectiles/PlayerTestWeapon.tscn")
 export(PackedScene) var Bullet: PackedScene = preload("res://Projectiles/Bullet.tscn")
 
 var current_ammo: int = max_ammo
@@ -27,7 +26,7 @@ func _ready() -> void:
 func start_reload():
 	animation_player.play("reload") # animation player calls on _stop_reload() when it's finished 
 
-func _stop_reload(): # _ before function name = private function 
+func _stop_reload():
 	current_ammo  = max_ammo
 	get_node("/root/World/HUD").update_ammo(current_ammo)
 	emit_signal("weapon_ammo_changed", current_ammo)
@@ -41,7 +40,6 @@ func set_current_ammo(new_ammo: int):
 
 		emit_signal("weapon_ammo_changed", current_ammo)
 		
-
 func shoot():
 	if current_ammo != 0 and attack_cooldown.is_stopped() and Bullet != null:
 		if shotgun:
@@ -68,7 +66,7 @@ func shoot():
 		if current_ammo == 0:
 			emit_signal("weapon_out_of_ammo")
 		elif max_ammo / current_ammo > 3:
-			# show low ammo
+			get_node("/root/World/HUD").show_message("Low ammunition!")
 			sound_ammo.play()
 			
 func get_class():

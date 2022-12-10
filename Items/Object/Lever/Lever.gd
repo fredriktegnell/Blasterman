@@ -8,29 +8,17 @@ onready var _bridge_nodes2 = get_node("../../LevelNavigation/Bridge2").get_used_
 onready var _water_collision = get_node("../../LevelNavigator/WaterCollision")
 onready var _ground_path = "../../LevelNavigator/BaseBackground"
 
-
-
-
 var inside = false
 
 export(int) var damage: int = 0
-
-
 
 func _on_Lever_area_entered(area: Area2D)->bool:
 	inside = true
 	return inside
 
-
 func _on_Lever_area_exited(area:Area2D)->bool:
 	inside = false
 	return inside
-
-func _ready()->void:
-	pass
-	#for pos in _bridge_nodes2:
-	#	get_node("../../LevelNavigation/WaterCollision").set_cell(pos[0],pos[1], 5)
-	#get_node("../../LevelNavigation").remove_child(_bridge2)
 	
 func _physics_process(_delta: float)->void:
 	
@@ -48,10 +36,6 @@ func _physics_process(_delta: float)->void:
 				for pos in _bridge_nodes2:
 					_tileManager(pos[0],pos[1], "waterCollision2")
 				_animated_sprite.frame = 0
-				
-				
-				
-				
 				
 func _tileManager(pos_x: int, pos_y: int, type: String) -> void:
 	match type:
