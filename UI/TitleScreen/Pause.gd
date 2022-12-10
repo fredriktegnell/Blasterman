@@ -24,3 +24,8 @@ func set_visible(is_visible):
 func _on_QuitButton_pressed():
 	get_tree().quit()
 
+
+
+func _on_LeaderBoard_pressed():
+	get_tree().change_scene("res://UI/TitleScreen/LeaderBoard.tscn")
+	pass # Replace with function body.

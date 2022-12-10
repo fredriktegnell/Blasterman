@@ -2,7 +2,7 @@ extends Node2D
 
 const EnemyBase = preload("res://Entity/Enemy/EnemyBase.tscn")
 onready var basic_spawn_timer = $BasicSpawnTimer
-
+onready var leaderboard = get_node("LeaderBoard")
 
 
 #var rng = RandomNumberGenerator.new()
@@ -18,6 +18,7 @@ var wave_counter = 0 # number of waves since increasing the amount of enemies sp
 
 
 func _ready():
+	remove_child(leaderboard)
 	randomize()
 	
 
